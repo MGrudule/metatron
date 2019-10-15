@@ -1,6 +1,6 @@
 $gridSize: 1vw;
 $circleR: 4;
-$circleD: $circleR*2;
+$circleD: $circleR * 2;
 $rows: (
   1: 0,
   2: 2,
@@ -18,7 +18,7 @@ $columns: (
   "right": 7
 );
 @function row-point($value) {
-  @return $value * $circleR + $circleR *0.25;
+  @return $value * $circleR + $circleR * 0.25;
 }
 @mixin calc-row($value) {
   grid-row-start: row-point($value);
@@ -37,11 +37,9 @@ body {
   background: linear-gradient(180deg, #000e23 0%, #000f21 100%);
   margin: 0 auto;
   text-align: center;
-  padding: 15em;
-
-  h1 {
-    color: white;
-    font: "Open sans";
+  padding-top: 10vw;
+  @media screen and (min-width: 601px) {
+    padding-top: 10vw;
   }
 }
 
@@ -61,71 +59,94 @@ body {
     grid-row-end: 40;
 
     .path-hex {
-      stroke-width: 0.1;
-      stroke: rgba(255,255,255,0.1);
+      stroke-width: 0.08;
+      stroke: rgba(255, 255, 255, 0.1);
       fill: none;
     }
 
-    .path-hex-new {
+    .animated {
       stroke-width: 0.1;
-      stroke: rgba(255, 255, 255, 0.5);
-      fill: none;
-      stroke-dasharray: 100;
-      animation: 3s dash ease-in forwards;
-    }
-
-    .path-hex-circle {
-      stroke-width: 0.2;
-      stroke: rgba(255, 255, 255, 0.5);
+      stroke: rgba(255, 255, 255, 0.4);
       fill: none;
       stroke-dasharray: 210;
-      animation: 5s dash2 ease-in forwards;
+      animation: 4s dash ease-in forwards;
+    }
+
+    .path-circle {
+      stroke-width: 0.05;
+      stroke: rgba(255, 255, 255, 0.7);
+      fill: none;
+      stroke-dasharray: 210;
+      animation: 5s dash2 ease-in ;
+
+      &.sm {
+        stroke-width: 0.1;
+        animation: 5s dash2 ease-in ;
+        animation-direction: alternate;
+      }
     }
   }
   @keyframes dash {
-    from {
-      stroke-dashoffset: 210;
+    0% {
+      opacity: 0;
     }
 
-    to {
+    1% {
+      opacity: 1;
+      stroke-dashoffset: 110;
+    }
+
+    100% {
       stroke-dashoffset: 310;
     }
   }
   @keyframes dash2 {
-    from {
+    0% {
       stroke-dashoffset: 210;
-    }
+          }
 
-    to {
-      stroke-dashoffset: 810;
+    70% {
+      stroke-dashoffset: 10;
+
+    }
+    100% {
+      opacity:0;
     }
   }
 
   .circle {
-    background: radial-gradient(40% 40% at 50% 50%, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
-    transition: 1s ease-in;
+    background: radial-gradient(
+      40% 40% at 50% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
     border-radius: 100%;
     display: block;
     transition: 3s ease-in;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 999;
 
     &:after {
-      content: '';
+      content: "";
       width: 100%;
       height: 100%;
       display: block;
       position: absolute;
       left: 0;
       top: 0;
-      transition: 1s ease-in;
+      transition: 2s ease-in;
+      transition-delay: 0.3s;
       transform: scale(0.1);
-      background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(196, 196, 196, 0) 100%);
+      background: radial-gradient(
+        50% 50% at 50% 50%,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(196, 196, 196, 0) 100%
+      );
     }
 
     &:hover {
-      transition-delay: 2s;
+      transition: 1s ease-out;
       border: 1px solid rgba(255, 255, 255, 1);
 
       &:after {

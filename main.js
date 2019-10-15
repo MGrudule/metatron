@@ -99,6 +99,7 @@ for (let [line, value] of Object.entries(lines)) {
     path.remove();
   }, 5000);
   circle.addEventListener("mouseover", () => addShape(value), false);
+  circle.addEventListener("touchmove", () => addShape(value), false);
 }
 
 function addShape(value) {

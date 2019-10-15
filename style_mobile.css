@@ -18,8 +18,8 @@ body {
       touch-action: none; } }
 
 .m-grid-container {
-  height: 40vw;
-  width: 36vw;
+  height: 80vw;
+  width: 72vw;
   margin: 0 auto;
   display: -ms-grid;
   display: grid;
@@ -29,8 +29,8 @@ body {
   grid-template-rows: repeat(40, 1fr);
   position: relative; }
   .m-grid-container .frame {
-    height: 40vw;
-    width: 36vw;
+    height: 80vw;
+    width: 72vw;
     -ms-grid-column: 1;
     grid-column-start: 1;
     -ms-grid-column-span: 35;
